@@ -9,8 +9,8 @@
     </h2>
 
     <p>
-      Receive community stories, programme updates, upcoming activities,
-      and opportunities to get involved.
+      Receive community stories, programme updates, upcoming activities, and
+      opportunities to get involved.
     </p>
 
     <span class="community-note">Together, we grow.</span>
@@ -19,7 +19,7 @@
   <form
     id="newsletter-form"
     class="signup"
-    action="https://gmail.us2.list-manage.com/subscribe/post?u=0cbdaf19c289bd187464344c2&amp;id=0c7b3e900d&amp;f_id=0094c2e1f0"
+    action="https://gmail.us2.list-manage.com/subscribe/post?u=0cbdaf19c289bd187464344c2&id=0c7b3e900d&f_id=0094c2e1f0"
     method="post"
     aria-labelledby="newsletter-heading"
     aria-describedby="newsletter-status"
@@ -59,8 +59,11 @@
     </div>
 
     <!-- Mailchimp spam protection: leave this field empty. -->
+    <!-- Mailchimp spam protection: leave this field empty. -->
     <div aria-hidden="true" style="position:absolute;left:-5000px;">
+      <label for="newsletter-honeypot">Leave this field empty</label>
       <input
+        id="newsletter-honeypot"
         type="text"
         name="b_0cbdaf19c289bd187464344c2_0c7b3e900d"
         tabindex="-1"
@@ -91,14 +94,11 @@
         id="newsletter-feedback-icon"
         class="feedback-icon"
         aria-hidden="true"
-        hidden
-      ></span>
+        hidden></span>
 
       <div>
         <strong id="newsletter-feedback-title" hidden></strong>
-        <p id="newsletter-status">
-          Enter your name and email to subscribe.
-        </p>
+        <p id="newsletter-status">Enter your name and email to subscribe.</p>
       </div>
     </div>
 
@@ -142,12 +142,8 @@
     const button = form.querySelector('button[type="submit"]');
     const status = document.getElementById("newsletter-status");
     const feedback = document.getElementById("newsletter-feedback");
-    const feedbackTitle = document.getElementById(
-      "newsletter-feedback-title"
-    );
-    const feedbackIcon = document.getElementById(
-      "newsletter-feedback-icon"
-    );
+    const feedbackTitle = document.getElementById("newsletter-feedback-title");
+    const feedbackIcon = document.getElementById("newsletter-feedback-icon");
 
     let sending = false;
     button.disabled = false;
@@ -190,7 +186,7 @@
       // Mailchimp's embedded-form JSONP endpoint.
       url.pathname = url.pathname.replace(
         "/subscribe/post",
-        "/subscribe/post-json"
+        "/subscribe/post-json",
       );
 
       for (const [name, value] of data.entries()) {
@@ -242,7 +238,7 @@
 
         showMessage(
           "We could not confirm your signup. Check your inbox before trying again, or contact us below.",
-          "error"
+          "error",
         );
       }, 20000);
 
@@ -256,7 +252,7 @@
 
           showMessage(
             "Thank you for joining our community. You'll receive our newsletter every month by email.",
-            "success"
+            "success",
           );
         } else {
           // Display text only; never inject Mailchimp response HTML.
@@ -270,7 +266,7 @@
           showMessage(
             message ||
               "We could not complete your signup. Please try again or contact us below.",
-            "error"
+            "error",
           );
         }
       };
@@ -282,7 +278,7 @@
 
         showMessage(
           "Unable to reach Mailchimp. Check your connection and try again.",
-          "error"
+          "error",
         );
       };
 
