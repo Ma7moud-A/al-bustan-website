@@ -1,62 +1,517 @@
 <section id="connect" class="section connect" aria-labelledby="connect-title">
-<div>
-<span class="eyebrow">LET’S KEEP IN TOUCH</span>
-<h2 id="connect-title">Good things<br/>start with<br/>
-<em>staying in touch.</em>
-</h2>
-<p>Receive community stories, programme updates, upcoming activities, and opportunities to get involved.</p>
-<span class="community-note">Together, we grow.</span>
-</div>
-<div class="signup">
-<h3>Stay connected</h3>
-<label for="newsletter-name">Your name</label>
-<input id="newsletter-name" name="name" type="text" autocomplete="name" placeholder="Full name" disabled=""/>
-<label for="newsletter-email">Email address</label>
-<input id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" disabled=""/>
-<div class="consent">
-<input id="newsletter-consent" type="checkbox" disabled=""/>
-<label for="newsletter-consent">I would like to receive Al-Bustan Association’s newsletter by email.</label>
-</div>
-<button type="button" class="button" aria-describedby="newsletter-status" disabled="">Join our newsletter</button>
-<p id="newsletter-status" class="fineprint">Newsletter sign-up will be available soon.</p>
-<p class="fineprint">For newsletter enquiries or unsubscribe requests, email <a href="mailto:jer.est.albustan3@gmail.com">jer.est.albustan3@gmail.com</a>.</p>
-</div>
+  <div>
+    <span class="eyebrow">LET’S KEEP IN TOUCH</span>
+
+    <h2 id="connect-title">
+      Good things<br />
+      start with<br />
+      <em>staying in touch.</em>
+    </h2>
+
+    <p>
+      Receive community stories, programme updates, upcoming activities,
+      and opportunities to get involved.
+    </p>
+
+    <span class="community-note">Together, we grow.</span>
+  </div>
+
+  <form
+    id="newsletter-form"
+    class="signup"
+    action="https://gmail.us2.list-manage.com/subscribe/post?u=0cbdaf19c289bd187464344c2&amp;id=0c7b3e900d&amp;f_id=0094c2e1f0"
+    method="post"
+    aria-labelledby="newsletter-heading"
+    aria-describedby="newsletter-status"
+  >
+    <h3 id="newsletter-heading">Stay connected</h3>
+
+    <label for="newsletter-name">Your name</label>
+    <input
+      id="newsletter-name"
+      name="FNAME"
+      type="text"
+      autocomplete="name"
+      placeholder="Full name"
+      required
+    />
+
+    <label for="newsletter-email">Email address</label>
+    <input
+      id="newsletter-email"
+      name="EMAIL"
+      type="email"
+      autocomplete="email"
+      placeholder="you@example.com"
+      required
+    />
+
+    <div class="consent">
+      <input id="newsletter-consent" type="checkbox" required />
+      <label for="newsletter-consent">
+        I would like to receive Al-Bustan Association’s newsletter by email.
+      </label>
+    </div>
+
+    <!-- Website Newsletter tag -->
+    <div hidden>
+      <input type="hidden" name="tags" value="13368" />
+    </div>
+
+    <!-- Mailchimp spam protection: leave this field empty. -->
+    <div aria-hidden="true" style="position:absolute;left:-5000px;">
+      <input
+        type="text"
+        name="b_0cbdaf19c289bd187464344c2_0c7b3e900d"
+        tabindex="-1"
+        value=""
+        autocomplete="off"
+      />
+    </div>
+
+    <button
+      type="submit"
+      name="subscribe"
+      class="button"
+      aria-describedby="newsletter-status"
+      disabled
+    >
+      Join our newsletter
+    </button>
+
+    <div
+      id="newsletter-feedback"
+      class="newsletter-feedback"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+      data-state="idle"
+    >
+      <span
+        id="newsletter-feedback-icon"
+        class="feedback-icon"
+        aria-hidden="true"
+        hidden
+      ></span>
+
+      <div>
+        <strong id="newsletter-feedback-title" hidden></strong>
+        <p id="newsletter-status">
+          Enter your name and email to subscribe.
+        </p>
+      </div>
+    </div>
+
+    <noscript>
+      <p class="fineprint">
+        Please enable JavaScript to subscribe on this page.
+      </p>
+    </noscript>
+
+    <p class="fineprint unsubscribe-note">
+      One newsletter each month. Unsubscribe anytime using the link in any
+      newsletter.
+    </p>
+
+    <a
+      href="https://eepurl.com/lu2Cd02m0E"
+      class="mailchimp-badge"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Mailchimp (opens in a new tab)"
+    >
+      <img
+        src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-dark.svg"
+        alt="Intuit Mailchimp"
+        width="220"
+        height="40"
+        loading="lazy"
+      />
+    </a>
+  </form>
 </section>
+
+<script is:inline>
+  (() => {
+    const form = document.getElementById("newsletter-form");
+
+    if (!form || form.dataset.ready) return;
+
+    form.dataset.ready = "true";
+
+    const button = form.querySelector('button[type="submit"]');
+    const status = document.getElementById("newsletter-status");
+    const feedback = document.getElementById("newsletter-feedback");
+    const feedbackTitle = document.getElementById(
+      "newsletter-feedback-title"
+    );
+    const feedbackIcon = document.getElementById(
+      "newsletter-feedback-icon"
+    );
+
+    let sending = false;
+    button.disabled = false;
+
+    const showMessage = (message, state) => {
+      status.textContent = message;
+      status.dataset.state = state;
+      feedback.dataset.state = state;
+
+      feedbackTitle.hidden = state === "idle";
+      feedbackIcon.hidden = state === "idle";
+
+      feedbackTitle.textContent =
+        state === "success"
+          ? "You're subscribed!"
+          : state === "error"
+            ? "Please check your signup"
+            : "Joining our community…";
+
+      feedbackIcon.textContent =
+        state === "success" ? "✓" : state === "error" ? "!" : "…";
+    };
+
+    form.addEventListener("submit", (event) => {
+      // Keep the visitor on this page.
+      event.preventDefault();
+
+      if (sending) return;
+
+      for (const field of ["FNAME", "EMAIL"]) {
+        const input = form.elements.namedItem(field);
+        input.value = input.value.trim();
+      }
+
+      if (!form.reportValidity()) return;
+
+      const data = new FormData(form);
+      const url = new URL(form.action);
+
+      // Mailchimp's embedded-form JSONP endpoint.
+      url.pathname = url.pathname.replace(
+        "/subscribe/post",
+        "/subscribe/post-json"
+      );
+
+      for (const [name, value] of data.entries()) {
+        if (typeof value === "string") {
+          url.searchParams.set(name, value);
+        }
+      }
+
+      const callbackName =
+        "bustanNewsletter_" +
+        Date.now() +
+        "_" +
+        Math.random().toString(36).slice(2);
+
+      url.searchParams.set("c", callbackName);
+
+      const script = document.createElement("script");
+      let finished = false;
+
+      sending = true;
+      button.disabled = true;
+      button.textContent = "Submitting…";
+      form.setAttribute("aria-busy", "true");
+
+      showMessage("Submitting your signup…", "pending");
+
+      const cleanup = () => {
+        finished = true;
+        clearTimeout(timer);
+        script.remove();
+
+        // Ignore late responses after a timeout.
+        window[callbackName] = () => {};
+
+        setTimeout(() => {
+          delete window[callbackName];
+        }, 60000);
+
+        sending = false;
+        button.disabled = false;
+        button.textContent = "Join our newsletter";
+        form.removeAttribute("aria-busy");
+      };
+
+      const timer = setTimeout(() => {
+        if (finished) return;
+
+        cleanup();
+
+        showMessage(
+          "We could not confirm your signup. Check your inbox before trying again, or contact us below.",
+          "error"
+        );
+      }, 20000);
+
+      window[callbackName] = (response) => {
+        if (finished) return;
+
+        cleanup();
+
+        if (response && response.result === "success") {
+          form.reset();
+
+          showMessage(
+            "Thank you for joining our community. You'll receive our newsletter every month by email.",
+            "success"
+          );
+        } else {
+          // Display text only; never inject Mailchimp response HTML.
+          const message =
+            typeof response?.msg === "string"
+              ? new DOMParser()
+                  .parseFromString(response.msg, "text/html")
+                  .body.textContent.trim()
+              : "";
+
+          showMessage(
+            message ||
+              "We could not complete your signup. Please try again or contact us below.",
+            "error"
+          );
+        }
+      };
+
+      script.onerror = () => {
+        if (finished) return;
+
+        cleanup();
+
+        showMessage(
+          "Unable to reach Mailchimp. Check your connection and try again.",
+          "error"
+        );
+      };
+
+      script.src = url.href;
+      document.body.appendChild(script);
+    });
+  })();
+</script>
+
 <style>
-.section { max-width:1480px; margin:0 auto; padding:85px 6%; }
-h2 { margin:20px 0 27px; }
-h2 em { color:var(--primary); font-style:normal; }
-@media(max-width:700px) { .section { padding:55px 6%; } }
-.connect{background:#267f85;color:white;display:grid;grid-template-columns:1fr 1fr;gap:10%;align-items:center}
-.connect .eyebrow{color:#daffff}
-.connect h2{font-size:clamp(42px,4.7vw,65px)}
-.connect h2 em{color:#cdf1f1}
-.connect>div>p{color:#e3f3f3;max-width:410px}
-.community-note{display:block;font-size:15px;margin-top:28px;padding-top:23px;border-top:1px solid #ffffff40;max-width:410px}
-.signup{background:white;color:#2d2b2b;padding:38px;border-radius:12px}
-.signup h3{font-size:30px;letter-spacing:-.8px;margin-bottom:28px}
-.signup>label{font-size:14px;font-weight:600;display:block;margin-bottom:7px}
-.signup>input{font-size:16px;width:100%;border:1px solid #aec7c7;border-radius:5px;background:#f7fbfb;padding:13px 14px;display:block;margin-bottom:21px}
-.consent{display:flex;gap:12px;align-items:flex-start;margin:22px 0}
-.consent button{width:18px;height:18px;margin-top:4px}
-.consent label{font-size:14px;line-height:1.6;cursor:pointer}
-.signup>.button{width:100%}
-.fineprint{font-size:12px;color:#5c7373;margin-top:14px}
-.fineprint a{text-decoration:underline}
-.consent input { flex-shrink:0; width:18px; height:18px; margin:4px 0 0; }
-.signup input:disabled { opacity:1; color:#536666; }
-.signup .button:disabled { opacity:0.65; cursor:not-allowed; }
-.fineprint { overflow-wrap:anywhere; }
-@media(max-width:700px) {
-  .connect { grid-template-columns:minmax(0,1fr); gap:28px; }
-  .connect h2 { font-size:46px; }
-  .signup { padding:29px; }
-}
-@media(max-width:380px) { .connect h2 { font-size:35px; } }
+  .section {
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 85px 6%;
+  }
 
-.connect .signup > .fineprint {
-  color: #5c7373;
-  max-width: none;
-}
+  h2 {
+    margin: 20px 0 27px;
+  }
 
+  h2 em {
+    color: var(--primary);
+    font-style: normal;
+  }
+
+  .connect {
+    background: #267f85;
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10%;
+    align-items: center;
+  }
+
+  .connect .eyebrow {
+    color: #daffff;
+  }
+
+  .connect h2 {
+    font-size: clamp(42px, 4.7vw, 65px);
+  }
+
+  .connect h2 em {
+    color: #cdf1f1;
+  }
+
+  .connect > div > p {
+    color: #e3f3f3;
+    max-width: 410px;
+  }
+
+  .community-note {
+    display: block;
+    font-size: 15px;
+    margin-top: 28px;
+    padding-top: 23px;
+    border-top: 1px solid #ffffff40;
+    max-width: 410px;
+  }
+
+  .signup {
+    background: white;
+    color: #2d2b2b;
+    padding: 38px;
+    border-radius: 12px;
+  }
+
+  .signup h3 {
+    font-size: 30px;
+    letter-spacing: -0.8px;
+    margin-bottom: 28px;
+  }
+
+  .signup > label {
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 7px;
+  }
+
+  .signup > input {
+    font-size: 16px;
+    width: 100%;
+    border: 1px solid #aec7c7;
+    border-radius: 5px;
+    background: #f7fbfb;
+    padding: 13px 14px;
+    display: block;
+    margin-bottom: 21px;
+  }
+
+  .consent {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin: 22px 0;
+  }
+
+  .consent label {
+    font-size: 14px;
+    line-height: 1.6;
+    cursor: pointer;
+  }
+
+  .consent input {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin: 4px 0 0;
+  }
+
+  .signup > .button {
+    width: 100%;
+  }
+
+  .signup > .button:disabled {
+    opacity: 0.65;
+    cursor: wait;
+  }
+
+  .newsletter-feedback {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 18px;
+    padding: 16px;
+    border: 1px solid #c6dedf;
+    border-radius: 10px;
+    background: #f1f8f8;
+    color: #385b5e;
+  }
+
+  .newsletter-feedback[data-state="idle"] {
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .newsletter-feedback strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .newsletter-feedback [hidden] {
+    display: none;
+  }
+
+  #newsletter-status {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+
+  .feedback-icon {
+    flex: 0 0 26px;
+    width: 26px;
+    height: 26px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #267f85;
+    color: white;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .newsletter-feedback[data-state="success"] {
+    background: #edf8f0;
+    border-color: #b6d9bf;
+    color: #205b35;
+  }
+
+  .newsletter-feedback[data-state="success"] .feedback-icon {
+    background: #287c47;
+  }
+
+  .newsletter-feedback[data-state="error"] {
+    background: #fff4f2;
+    border-color: #e8c0ba;
+    color: #8b2921;
+  }
+
+  .newsletter-feedback[data-state="error"] .feedback-icon {
+    background: #a8372c;
+  }
+
+  .fineprint {
+    font-size: 12px;
+    color: #5c7373;
+    margin-top: 14px;
+    overflow-wrap: anywhere;
+  }
+
+  .unsubscribe-note {
+    text-align: center;
+  }
+
+  .mailchimp-badge {
+    display: block;
+    width: 220px;
+    max-width: 100%;
+    margin: 20px auto 0;
+  }
+
+  @media (max-width: 700px) {
+    .section {
+      padding: 55px 6%;
+    }
+
+    .connect {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 28px;
+    }
+
+    .connect h2 {
+      font-size: 46px;
+    }
+
+    .signup {
+      padding: 29px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .connect h2 {
+      font-size: 35px;
+    }
+  }
 </style>
