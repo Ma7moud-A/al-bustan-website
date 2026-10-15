@@ -1,0 +1,29 @@
+---
+
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+import "../styles/global.css";
+
+const {
+  title = "Al-Bustan Association | Silwan, Jerusalem",
+  description = "Discover Al-Bustan Association’s community programmes, activities and opportunities to get involved.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+
+  <body>
+    <slot />
+  </body>
+</html>

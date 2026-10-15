@@ -1,0 +1,74 @@
+<section class="quote-strip" aria-label="Our community’s hope">
+  <span class="quote-label">
+    THE WORDS THAT<br />
+    STILL GUIDE US
+  </span>
+
+  <blockquote>
+    “We will become one day <em>what we want.</em>”
+  </blockquote>
+
+  <span class="quote-origin">
+    From our community roots<br />
+    Since 2002
+  </span>
+</section>
+
+<style>
+  .quote-strip {
+    display: grid;
+    grid-template-columns: 1fr 3.5fr 1fr;
+    align-items: center;
+    gap: 30px;
+    padding: 35px 6%;
+    background: #edf7f7;
+    border-top: 1px solid #d7eaea;
+    border-bottom: 1px solid #d7eaea;
+  }
+
+  .quote-label {
+    color: var(--primary);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+  }
+
+  blockquote {
+    margin: 0;
+    font-family: Georgia, serif;
+    font-size: 27px;
+    line-height: 1.4;
+  }
+
+  .quote-origin {
+    color: #627474;
+    text-align: right;
+    font-size: 12px;
+  }
+
+  @media (max-width: 1000px) {
+    .quote-strip {
+      grid-template-columns: 1fr 4fr;
+    }
+
+    .quote-origin {
+      display: none;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .quote-strip {
+      display: block;
+      padding: 28px 6%;
+    }
+
+    .quote-label br {
+      display: none;
+    }
+
+    blockquote {
+      margin-top: 12px;
+      font-size: 25px;
+    }
+  }
+</style>

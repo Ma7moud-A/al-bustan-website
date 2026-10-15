@@ -1,0 +1,62 @@
+<section id="connect" class="section connect" aria-labelledby="connect-title">
+<div>
+<span class="eyebrow">LET’S KEEP IN TOUCH</span>
+<h2 id="connect-title">Good things<br/>start with<br/>
+<em>staying in touch.</em>
+</h2>
+<p>Receive community stories, programme updates, upcoming activities, and opportunities to get involved.</p>
+<span class="community-note">Together, we grow.</span>
+</div>
+<div class="signup">
+<h3>Stay connected</h3>
+<label for="newsletter-name">Your name</label>
+<input id="newsletter-name" name="name" type="text" autocomplete="name" placeholder="Full name" disabled=""/>
+<label for="newsletter-email">Email address</label>
+<input id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" disabled=""/>
+<div class="consent">
+<input id="newsletter-consent" type="checkbox" disabled=""/>
+<label for="newsletter-consent">I would like to receive Al-Bustan Association’s newsletter by email.</label>
+</div>
+<button type="button" class="button" aria-describedby="newsletter-status" disabled="">Join our newsletter</button>
+<p id="newsletter-status" class="fineprint">Newsletter sign-up will be available soon.</p>
+<p class="fineprint">For newsletter enquiries or unsubscribe requests, email <a href="mailto:jer.est.albustan3@gmail.com">jer.est.albustan3@gmail.com</a>.</p>
+</div>
+</section>
+<style>
+.section { max-width:1480px; margin:0 auto; padding:85px 6%; }
+h2 { margin:20px 0 27px; }
+h2 em { color:var(--primary); font-style:normal; }
+@media(max-width:700px) { .section { padding:55px 6%; } }
+.connect{background:#267f85;color:white;display:grid;grid-template-columns:1fr 1fr;gap:10%;align-items:center}
+.connect .eyebrow{color:#daffff}
+.connect h2{font-size:clamp(42px,4.7vw,65px)}
+.connect h2 em{color:#cdf1f1}
+.connect>div>p{color:#e3f3f3;max-width:410px}
+.community-note{display:block;font-size:15px;margin-top:28px;padding-top:23px;border-top:1px solid #ffffff40;max-width:410px}
+.signup{background:white;color:#2d2b2b;padding:38px;border-radius:12px}
+.signup h3{font-size:30px;letter-spacing:-.8px;margin-bottom:28px}
+.signup>label{font-size:14px;font-weight:600;display:block;margin-bottom:7px}
+.signup>input{font-size:16px;width:100%;border:1px solid #aec7c7;border-radius:5px;background:#f7fbfb;padding:13px 14px;display:block;margin-bottom:21px}
+.consent{display:flex;gap:12px;align-items:flex-start;margin:22px 0}
+.consent button{width:18px;height:18px;margin-top:4px}
+.consent label{font-size:14px;line-height:1.6;cursor:pointer}
+.signup>.button{width:100%}
+.fineprint{font-size:12px;color:#5c7373;margin-top:14px}
+.fineprint a{text-decoration:underline}
+.consent input { flex-shrink:0; width:18px; height:18px; margin:4px 0 0; }
+.signup input:disabled { opacity:1; color:#536666; }
+.signup .button:disabled { opacity:0.65; cursor:not-allowed; }
+.fineprint { overflow-wrap:anywhere; }
+@media(max-width:700px) {
+  .connect { grid-template-columns:minmax(0,1fr); gap:28px; }
+  .connect h2 { font-size:46px; }
+  .signup { padding:29px; }
+}
+@media(max-width:380px) { .connect h2 { font-size:35px; } }
+
+.connect .signup > .fineprint {
+  color: #5c7373;
+  max-width: none;
+}
+
+</style>

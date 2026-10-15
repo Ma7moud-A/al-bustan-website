@@ -1,0 +1,228 @@
+---
+// Content from the approved design. Each object becomes one card.
+const programmes = [
+  {
+    "number": "01",
+    "title": "Education",
+    "subtitle": "Curiosity into confidence",
+    "description": "Our Educational Center, Injaz, in Ras al-Amoud supports children’s learning through educational activities and academic assistance. We work to strengthen skills, encourage curiosity, and help children feel more confident in their abilities.",
+    "icon": "/images/programmes/icon-01.svg",
+    "featured": false,
+    "photos": [
+      {
+        "src": "/images/programmes/programme-01-1.jpg",
+        "alt": "Participants learning in the educational centre"
+      },
+      {
+        "src": "/images/programmes/programme-01-2.jpg",
+        "alt": "A group attending an educational session"
+      }
+    ]
+  },
+  {
+    "number": "02",
+    "title": "Psychosocial Support",
+    "subtitle": "A space to feel supported",
+    "description": "Through our Abaq Mental Health programme, we provide psychosocial support for children, young people, women, and families. Our work includes supportive activities, specialist assistance, and crisis intervention in response to community needs.",
+    "icon": "/images/programmes/icon-02.svg",
+    "featured": false,
+    "photos": [
+      {
+        "src": "/images/programmes/programme-02-1.jpg",
+        "alt": "Participants taking part in a group activity"
+      }
+    ]
+  },
+  {
+    "number": "03",
+    "title": "Sports",
+    "subtitle": "Stronger, together",
+    "description": "Our sports programmes help children and young people build fitness, discipline, teamwork, and confidence. Activities include football, basketball, taekwondo, judo, kickboxing, gymnastics, and circus.",
+    "icon": "/images/programmes/icon-03.svg",
+    "featured": false,
+    "photos": [
+      {
+        "src": "/images/programmes/programme-03-1.jpg",
+        "alt": "An Al-Bustan circus performance"
+      },
+      {
+        "src": "/images/programmes/programme-03-2.jpg",
+        "alt": "Young participants and their coach in a sports session"
+      }
+    ]
+  },
+  {
+    "number": "04",
+    "title": "Arts and Culture",
+    "subtitle": "Our stories. Our expression.",
+    "description": "Through dabke, drama, theatre, music, photography, and other creative activities, participants explore their talents, express their experiences, and connect with Palestinian cultural heritage.",
+    "icon": "/images/programmes/icon-04.svg",
+    "featured": false,
+    "photos": [
+      {
+        "src": "/images/programmes/programme-04-1.jpg",
+        "alt": "A cultural performance on stage"
+      }
+    ]
+  },
+  {
+    "number": "05",
+    "title": "Youth",
+    "subtitle": "The next generation takes part",
+    "description": "We create opportunities for young people to volunteer, develop leadership and awareness skills, and take part in community initiatives. Our youth programmes, including Jerusalem Ambassador and other activities, encourage responsibility, cooperation, and active participation.",
+    "icon": "/images/programmes/icon-05.svg",
+    "featured": false,
+    "photos": [
+      {
+        "src": "/images/programmes/programme-05-1.jpg",
+        "alt": "Young people taking part in a group visit"
+      }
+    ]
+  },
+  {
+    "number": "06",
+    "title": "Scouts",
+    "subtitle": "Belonging in action",
+    "description": "Al-Bustan’s scout group takes part in community and religious celebrations and events across Jerusalem. Through these activities, our scouts strengthen their sense of belonging, develop teamwork and leadership skills, and contribute to community life.",
+    "icon": "/images/programmes/icon-06.svg",
+    "featured": false,
+    "photos": [
+      {
+        "src": "/images/programmes/programme-06-1.jpg",
+        "alt": "Al-Bustan scouts participating in a community event"
+      }
+    ]
+  },
+  {
+    "number": "07",
+    "title": "Women’s Empowerment",
+    "subtitle": "Skills that open possibilities",
+    "description": "Our Women’s Circle brings women together for learning, mutual support, and community participation. Initiatives such as the Women’s Diploma develop practical skills and support pathways towards economic participation.",
+    "icon": "/images/programmes/icon-07.svg",
+    "featured": true,
+    "photos": [
+      {
+        "src": "/images/programmes/programme-07-1.jpg",
+        "alt": "Women participating in a training programme"
+      }
+    ]
+  }
+];
+---
+
+<section id="programmes" class="programmes" aria-labelledby="programmes-title">
+  <div class="section-heading">
+    <div>
+      <span class="eyebrow">02 / OUR WORK</span>
+      <h2 id="programmes-title">Opportunity takes<br /><em>many forms.</em></h2>
+    </div>
+    <p>From a child’s first learning milestones to a young person’s next opportunity, our programmes put people first.</p>
+  </div>
+
+  <div class="programme-grid">
+    {programmes.map((programme) => (
+      <article class:list={["programme", { featured: programme.featured }]}>
+        <div class="programme-photos">
+          {programme.photos.map((photo) => (
+            <img src={photo.src} alt={photo.alt} loading="lazy" />
+          ))}
+        </div>
+        <div class="programme-body">
+          <div class="card-top">
+            <img src={programme.icon} alt="" width="25" height="25" />
+            <span>{programme.number}</span>
+          </div>
+          <h3>{programme.title}</h3>
+          <p class="subtitle">{programme.subtitle}</p>
+          <p class="description">{programme.description}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .programmes {
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 85px 6%;
+    background: #f1f7f7;
+  }
+  .section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  h2 {
+    margin: 20px 0 27px;
+    font-size: clamp(36px, 3.7vw, 53px);
+  }
+  h2 em { color: var(--primary); font-style: normal; }
+  .section-heading > p { max-width: 330px; color: #5a6b6b; }
+  .programme-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 22px;
+  }
+  .programme {
+    min-width: 0;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #dbe7e7;
+    border-radius: 10px;
+  }
+  .programme-photos { display: flex; height: 210px; gap: 3px; }
+  .programme-photos img {
+    flex: 1 1 0;
+    min-width: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .programme-body { padding: 26px; }
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+    color: var(--primary);
+  }
+  .card-top span { font-size: 11px; letter-spacing: 2px; }
+  h3 { margin-bottom: 12px; font-size: 25px; letter-spacing: -0.7px; }
+  .subtitle {
+    margin-bottom: 12px;
+    color: var(--primary);
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .description { color: #5e6d6d; font-size: 15px; line-height: 1.75; }
+  .featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+  }
+  .featured .programme-photos { height: 100%; min-height: 300px; }
+  .featured .programme-body { padding: 35px; }
+  .featured .card-top { margin-bottom: 20px; }
+  @media (max-width: 1000px) {
+    .programme-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 700px) {
+    .programmes { padding: 55px 6%; }
+    .section-heading { display: block; }
+    .section-heading > p { max-width: 100%; }
+    h2 { font-size: 39px; }
+    .programme-grid { grid-template-columns: minmax(0, 1fr); }
+    .programme-photos { height: 235px; }
+    .description { font-size: 16px; }
+    .featured { grid-column: auto; display: block; }
+    .featured .programme-photos { height: 235px; min-height: 0; }
+    .featured .programme-body { padding: 26px; }
+  }
+  @media (max-width: 380px) {
+    h2 { font-size: 35px; }
+    .programme-photos { height: 200px; }
+  }
+</style>

@@ -1,0 +1,177 @@
+<section id="story" class="story" aria-labelledby="story-title">
+  <div>
+    <span class="eyebrow">01 / OUR STORY</span>
+
+    <h2 id="story-title">
+      A place to belong.<br />
+      <em>A reason to keep going.</em>
+    </h2>
+
+    <img
+      class="story-photo"
+      src="/images/story.jpg"
+      alt="Community members standing together facing demolished buildings in Silwan"
+      loading="lazy"
+      width="1600"
+      height="1200"
+    />
+  </div>
+
+  <div class="story-text">
+    <p class="lead">
+      Established in 2012, Al-Bustan Association grew from the community’s
+      youth efforts to support families facing demolition threats,
+      displacement, and the pressures of everyday life in Silwan.
+    </p>
+
+    <p>
+      Our roots extend to the Al-Bustan community tent, established in
+      2002—a place for people to gather, organize, and express their hopes
+      for the future.
+    </p>
+
+    <p>
+      These roots continue to guide our work. We create spaces where children
+      can learn and play, young people can develop their talents, and women
+      and families can find support and opportunities.
+    </p>
+
+    <p>
+      In November 2024, our headquarters and community tent were demolished.
+      Despite this loss, we continued delivering activities and supporting
+      the community through alternative spaces and partnerships.
+    </p>
+  </div>
+
+  <div class="timeline">
+    <div>
+      <strong>2002</strong>
+      <span>A tent brings the community together</span>
+    </div>
+
+    <div>
+      <strong>2012</strong>
+      <span>Al-Bustan Association is established</span>
+    </div>
+
+    <div>
+      <strong>Today</strong>
+      <span>Our community work continues</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .story {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 45px 7%;
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 85px 6%;
+  }
+
+  h2 {
+    margin: 20px 0 27px;
+    font-size: clamp(36px, 3.7vw, 53px);
+  }
+
+  h2 em {
+    color: var(--primary);
+    font-style: normal;
+  }
+
+  .story-photo {
+    width: 100%;
+    height: auto;
+    margin-top: 32px;
+    border-radius: 10px;
+  }
+
+  .story-text {
+    padding-top: 35px;
+    color: #5d6666;
+  }
+
+  .lead {
+    color: #2d3b3b;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  .story-text p + p {
+    margin-top: 20px;
+  }
+
+  .timeline {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 35px;
+    padding-top: 30px;
+    border-top: 1px solid #d9e5e5;
+  }
+
+  .timeline > div {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .timeline strong {
+    color: var(--primary);
+    font-size: 36px;
+    letter-spacing: -1.5px;
+  }
+
+  .timeline span {
+    max-width: 155px;
+    color: #607171;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 1000px) {
+    .timeline > div {
+      display: block;
+    }
+
+    .timeline span {
+      display: block;
+      margin-top: 7px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .story {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 28px;
+      padding: 55px 6%;
+    }
+
+    h2 {
+      font-size: 39px;
+    }
+
+    .story-text {
+      padding-top: 0;
+    }
+
+    .story-photo {
+      margin-top: 25px;
+    }
+
+    .timeline {
+      gap: 20px;
+    }
+
+    .timeline strong {
+      font-size: 31px;
+    }
+
+    .timeline span {
+      font-size: 12px;
+    }
+  }
+</style>

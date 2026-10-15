@@ -1,0 +1,167 @@
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <span class="eyebrow">SILWAN, JERUSALEM · SINCE 2012</span>
+
+    <h1 id="hero-title">
+      Rooted in<br />
+      community.<br />
+      <span>Growing<br />together.</span>
+    </h1>
+
+    <p>
+      Al-Bustan Association is a community-based Palestinian organization in
+      Silwan, Jerusalem. We work with children, young people, women, and families
+      to expand access to safe spaces and education, strengthen wellbeing,
+      nurture talent, and create opportunities for community participation.
+    </p>
+
+    <div class="actions">
+      <a class="button" href="#programmes">Explore our work</a>
+      <a class="text-link" href="#connect">Stay connected</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <img
+      class="hero-photo"
+      src="/images/hero.jpg"
+      alt="A mural celebrating Silwan"
+      width="1440"
+      height="960"
+      fetchpriority="high"
+    />
+
+    <div class="hero-caption">
+      <span>OUR COMMUNITY. OUR HOME.</span>
+      <p>Creating opportunities<br />together.</p>
+    </div>
+
+    <p class="visual-footnote">
+      Through learning, sports, arts, psychosocial support, and community
+      initiatives, we help people develop their abilities, connect with others,
+      and shape their future.
+    </p>
+  </div>
+</section>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+    align-items: center;
+    gap: 7%;
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 65px 6% 75px;
+  }
+
+  h1 {
+    margin: 24px 0;
+    font-size: clamp(54px, 5.8vw, 86px);
+    line-height: 1.04;
+  }
+
+  h1 span {
+    color: var(--primary);
+  }
+
+  .hero-copy > p {
+    max-width: 500px;
+    color: var(--text-secondary);
+    font-size: 16px;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 27px;
+    margin-top: 28px;
+  }
+
+  .hero-visual {
+    min-width: 0;
+    padding-bottom: 5px;
+  }
+
+  .hero-photo {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 0.99;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .hero-caption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    padding: 25px 30px;
+    background: #4cabb2;
+    color: #102f31;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .hero-caption > span {
+    max-width: 125px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.7px;
+  }
+
+  .hero-caption > p {
+    font-size: 23px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+  }
+
+  .visual-footnote {
+    margin: 18px 3px 0;
+    color: #5c6a6a;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 1000px) {
+    h1 {
+      font-size: 65px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .hero {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 36px;
+      padding: 35px 6% 45px;
+    }
+
+    .hero-copy > p {
+      max-width: none;
+    }
+
+    .hero-photo {
+      aspect-ratio: 1.35;
+    }
+
+    .hero-caption > p {
+      font-size: 22px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    h1 {
+      font-size: 56px;
+    }
+
+    .hero-caption {
+      padding: 22px;
+      gap: 16px;
+    }
+
+    .hero-caption > p {
+      font-size: 20px;
+    }
+  }
+</style>

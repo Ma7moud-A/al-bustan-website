@@ -1,0 +1,99 @@
+<section class="section impact" aria-labelledby="impact-title">
+  <div>
+    <span class="eyebrow">
+      03 / WHAT WE WORK TOWARDS
+    </span>
+    <h2 id="impact-title">
+      People first.
+      <br/>
+      <em>
+        Possibility follows.
+      </em>
+    </h2>
+    <p>
+      Our work reaches children, young people, women, and families across Silwan and other Jerusalem communities. We also collaborate with institutions and partners beyond Jerusalem.
+    </p>
+    <ul class="impact-goals">
+      <li>
+        Stronger learning skills and greater confidence among children.
+      </li>
+      <li>
+        Improved wellbeing and access to supportive relationships.
+      </li>
+      <li>
+        Opportunities for young people to develop talents and leadership skills.
+      </li>
+      <li>
+        Greater participation and practical opportunities for women.
+      </li>
+      <li>
+        Stronger community connections through shared activities and volunteering.
+      </li>
+    </ul>
+  </div>
+  <div class="award">
+    <span class="eyebrow">
+      RECOGNISED IN 2025
+    </span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trophy" aria-hidden="true">
+      <path d="M10 14.66V17a1 1 0 0 1-1 1 2 2 0 0 0-2 2v2">
+      </path>
+      <path d="M14 14.66V17a1 1 0 0 0 1 1 2 2 0 0 1 2 2v2">
+      </path>
+      <path d="M17.916 10H19.5A2.5 2.5 0 0 0 22 7.5V5a1 1 0 0 0-1-1h-3">
+      </path>
+      <path d="M4 22h16">
+      </path>
+      <path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z">
+      </path>
+      <path d="M6.084 10H4.5A2.5 2.5 0 0 1 2 7.5V5a1 1 0 0 1 1-1h3">
+      </path>
+    </svg>
+    <h3>
+      For Jerusalem
+      <br/>
+      We Work
+    </h3>
+    <p>
+      In 2025, Al-Bustan received Al-Tawoon’s “For Jerusalem We Work” – Ragheb Al-Kalouti Award for its “Youth in Jerusalem” initiative, developed with a network of 21 French municipalities.
+    </p>
+    <img class="award-photo" src="/images/award.jpg" alt="Al-Bustan representatives at the 2025 Al-Tawoon award event" loading="lazy" width="750" height="1000"/>
+  </div>
+</section>
+
+<style>
+.section { max-width: 1480px; margin: 0 auto; padding: 85px 6%; }
+.section h2 { font-size: clamp(36px, 3.7vw, 53px); margin: 20px 0 27px; }
+h2 em { color: var(--primary); font-style: normal; }
+.impact{display:grid;grid-template-columns:1.2fr 1fr;gap:8%;align-items:center}
+.impact>div>p{color:#5e6d6d}
+.impact-goals{list-style:none;padding:0;margin:22px 0 0}
+.impact-goals li{padding:13px 0 13px 23px;position:relative;border-bottom:1px solid #e0e9e9;color:#536565}
+.impact-goals li:before{content:'✓';position:absolute;left:0;color:#267f85;font-weight:bold}
+.award{background:#edf7f7;border:1px solid #d5e8e8;border-radius:12px;padding:32px;display:grid;grid-template-columns:1fr 1fr;gap:15px 24px}
+.award .eyebrow{grid-column:1/-1}
+.award svg{grid-column:1;color:#267f85;margin:8px 0}
+.award h3{grid-column:1;font-size:29px;letter-spacing:-.8px}
+.award p{grid-column:1/-1;font-size:14px;color:#526969;line-height:1.75;margin-top:10px}
+.award-photo{grid-column:2;grid-row:2/4;width:100%;height:auto;align-self:center;border-radius:5px}
+@media (max-width: 1000px) {
+  .award { display: block; }
+  .award svg { margin: 20px 0; }
+  .award-photo { max-width: 260px; display: block; margin: 22px auto 0; }
+}
+@media (max-width: 700px) {
+  .impact { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .award { padding: 30px; }
+  .award h3 { font-size: 35px; }
+  .award-photo { max-width: 290px; }
+}
+
+@media (max-width: 700px) {
+  .section { padding: 55px 6%; }
+  .section h2 { font-size: 39px; }
+}
+@media (max-width: 380px) {
+  .section h2 { font-size: 35px; }
+}
+
+</style>
